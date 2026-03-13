@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PawFriends - Cuidado Satinado</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Space+Mono&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- NAV (Mobile First) -->
+    <nav>
+        <div class="logo" onclick="router('home')">
+            <div class="logo-icon">🐶</div>
+            PawFriends
+        </div>
+
+        <!-- Hamburger Menu Button -->
+        <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menú">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <!-- Desktop Navigation -->
+        <div class="nav-links">
+            <div class="nav-item" onclick="router('home')">Inicio</div>
+            <div class="nav-item" onclick="router('sitters')">Cuidadores</div>
+            <div class="nav-item" onclick="router('foundations')">Fundaciones</div>
+            <div class="nav-item" onclick="router('dashboard')">Mi Cuenta</div>
+        </div>
+
+        <!-- Desktop CTA Buttons -->
+        <div class="nav-cta-desktop">
+            <button class="btn-plump btn-caretaker" onclick="switchAuthTab('sitter-reg'); router('auth'); toggleMenu()"
+                style="padding: 10px 20px; font-size: 0.9rem;">
+                <span>🐾</span> Ser Cuidador
+            </button>
+            <button class="btn-plump" style="padding: 10px 20px; font-size: 0.9rem;"
+                onclick="router('auth')">Login</button>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation Menu -->
+    <div class="nav-menu" id="navMenu">
+        <a href="#" onclick="router('home'); toggleMenu()">Inicio</a>
+        <a href="#" onclick="router('sitters'); toggleMenu()">Cuidadores</a>
+        <a href="#" onclick="router('foundations'); toggleMenu()">Fundaciones</a>
+        <a href="#" onclick="router('dashboard'); toggleMenu()">Mi Cuenta</a>
+
+        <div class="nav-menu-cta">
+            <button class="btn-plump btn-caretaker" onclick="switchAuthTab('sitter-reg'); router('auth'); toggleMenu()">
+                <span>🐾</span> Ser Cuidador
+            </button>
+            <button class="btn-plump" onclick="router('auth'); toggleMenu()">Login / Registro</button>
+        </div>
+    </div>
+
+    <!-- VIEW: HOME -->
+    <main id="view-home" class="container fade-in">
+        <div class="hero">
+            <div class="hero-content">
+                <p class="mono-tag" style="margin-bottom: 1rem;">// Est. 2024</p>
+                <h1>Manos Suaves.<span>Corazones Cálidos.</span></h1>
+                <p style="font-size: 1rem; line-height: 1.6; opacity: 0.8; margin-bottom: 1rem;">
+                    La experiencia premium satinada para tus amigos peludos. Conectamos a tus mascotas con cuidadores
+                    que los tratan como familia.
+                </p>
+
+                <div class="cta-group">
+                    <button class="btn-plump" onclick="router('sitters')">Buscar Cuidador</button>
+                    <button class="btn-plump btn-secondary" onclick="router('foundations')">Ver Fundaciones</button>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="mono-tag">CUIDADORES</span>
+                        <p>12,402</p>
+                    </div>
+                    <div class="stat-item">
+                        <span class="mono-tag">MASCOTAS</span>
+                        <p>48.9k</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pet-card-container">
+                <div class="plush-volume main-plush-card">
+                    <img src="https://image.qwenlm.ai/public_source/95de1b57-21f3-454f-82dc-cae74063b684/1a7a3aca6-61a4-46db-ae00-2733414dd0e4.png"
+                        alt="Featured Pet">
+                    <div class="card-info">
+                        <span class="mono-tag" style="background: #ff8e8e;">CUIDADOR DESTACADO</span>
+                        <h3>Sarah & Mochi</h3>
+                        <p>Experta en Satin-Stitch • 5.0 Rating</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top: 3rem;">
+            <h2 style="font-size: 1.8rem; margin-bottom: 1.5rem;">Cuidadores Destacados</h2>
+            <div class="card-grid">
+                <div class="plush-card">
+                    <img src="https://image.qwenlm.ai/public_source/95de1b57-21f3-454f-82dc-cae74063b684/1a6ec3814-bed0-43ae-9222-9a378243ab02.png"
+                        class="card-img" alt="Sitter">
+                    <div class="card-meta">
+                        <h3>Ana G.</h3>
+                        <span class="price-tag">$15/h</span>
+                    </div>
+                    <p style="opacity: 0.7; font-size: 0.9rem;">Amante de los gatos y expertos en medicación.</p>
+                    <button class="btn-plump btn-secondary" style="width: 100%; margin-top: auto;"
+                        onclick="openBooking('Ana G.')">Reservar</button>
+                </div>
+                <div class="plush-card">
+                    <img src="https://image.qwenlm.ai/public_source/95de1b57-21f3-454f-82dc-cae74063b684/1a7a3aca6-61a4-46db-ae00-2733414dd0e4.png"
+                        class="card-img" alt="Sitter">
+                    <div class="card-meta">
+                        <h3>Carlos M.</h3>
+                        <span class="price-tag">$20/h</span>
+                    </div>
+                    <p style="opacity: 0.7; font-size: 0.9rem;">Paseos largos y entrenamiento básico.</p>
+                    <button class="btn-plump btn-secondary" style="width: 100%; margin-top: auto;"
+                        onclick="openBooking('Carlos M.')">Reservar</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- VIEW: SITTERS LIST -->
+    <div id="view-sitters" class="container hidden fade-in">
+        <h2 style="font-size: 2rem; margin-bottom: 1rem;">Encuentra tu Cuidador Ideal</h2>
+
+        <div class="filters plush-volume">
+            <select class="plush-input">
+                <option>Todos los servicios</option>
+                <option>Paseo</option>
+                <option>Cuidado en casa</option>
+                <option>Veterinario</option>
+            </select>
+            <select class="plush-input">
+                <option>Cualquier tamaño de mascota</option>
+                <option>Pequeño</option>
+                <option>Mediano</option>
+                <option>Grande</option>
+            </select>
+            <button class="btn-plump" style="padding: 12px 20px; font-size: 0.9rem;">Filtrar</button>
+        </div>
+
+        <div class="card-grid">
+            <script>
+                for (let i = 1; i <= 6; i++) {
+                    document.write(`
+                    <div class="plush-card">
+                        <img src="https://image.qwenlm.ai/public_source/95de1b57-21f3-454f-82dc-cae74063b684/1a6ec3814-bed0-43ae-9222-9a378243ab02.png" class="card-img" style="filter: hue-rotate(${i * 40}deg);" alt="Sitter">
+                        <div class="card-meta">
+                            <h3>Cuidador ${i}</h3>
+                            <span class="price-tag">$${15 + i}/h</span>
+                        </div>
+                        <p style="opacity: 0.7; font-size: 0.9rem;">Experto en cuidados amorosos y juegos activos.</p>
+                        <button class="btn-plump btn-secondary" style="width: 100%; margin-top: auto;" onclick="openBooking('Cuidador ${i}')">Reservar</button>
+                    </div>
+                    `);
+                }
+            </script>
+        </div>
+    </div>
+
+    <!-- VIEW: FOUNDATIONS -->
+    <div id="view-foundations" class="container hidden fade-in">
+        <h2 style="font-size: 2rem; margin-bottom: 1rem;">Fundaciones Amigas</h2>
+        <p style="margin-bottom: 1.5rem; opacity: 0.8;">Apoya a quienes cuidan de los que no tienen voz.</p>
+
+        <div class="card-grid">
+            <div class="plush-card foundation-card">
+                <img src="https://image.qwenlm.ai/public_source/95de1b57-21f3-454f-82dc-cae74063b684/11187cd8b-956a-4242-9fba-e883d987a3b9.png"
+                    class="foundation-logo" alt="Logo">
+                <h3>Huellas de Esperanza</h3>
+                <p style="margin: 10px 0; font-size: 0.9rem;">Rescate y rehabilitación de perros callejeros.</p>
+                <div
+                    style="font-family: 'Space Mono'; font-size: 0.75rem; background: #f0f0f0; padding: 10px; border-radius: 15px; width: 100%;">
+                    📞 +55 1234 5678<br>
+                    📧 contacto@huellas.org
+                </div>
+                <button class="btn-plump btn-lavender" style="margin-top: 15px; width: 100%;">Donar / Contactar</button>
+            </div>
+
+            <div class="plush-card foundation-card">
+                <img src="https://image.qwenlm.ai/public_source/95de1b57-21f3-454f-82dc-cae74063b684/11187cd8b-956a-4242-9fba-e883d987a3b9.png"
+                    class="foundation-logo" alt="Logo" style="filter: hue-rotate(90deg);">
+                <h3>Gatos en el Techo</h3>
+                <p style="margin: 10px 0; font-size: 0.9rem;">Colonias felinas y esterilización gratuita.</p>
+                <div
+                    style="font-family: 'Space Mono'; font-size: 0.75rem; background: #f0f0f0; padding: 10px; border-radius: 15px; width: 100%;">
+                    📞 +55 9876 5432<br>
+                    📧 hola@gatostecho.org
+                </div>
+                <button class="btn-plump btn-lavender" style="margin-top: 15px; width: 100%;">Donar / Contactar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- VIEW: AUTH -->
+    <div id="view-auth" class="container hidden fade-in">
+        <div class="plush-volume auth-container">
+            <div style="padding: 30px 20px;">
+                <h2 style="margin-bottom: 1.5rem; font-size: 1.8rem;">Bienvenido a PawFriends</h2>
+
+                <div class="form-tabs">
+                    <button class="tab-btn active" onclick="switchAuthTab('login')">Login</button>
+                    <button class="tab-btn" onclick="switchAuthTab('user-reg')">Usuario</button>
+                    <button class="tab-btn" onclick="switchAuthTab('sitter-reg')">Cuidador</button>
+                </div>
+
+                <form id="form-login" class="fade-in">
+                    <div class="input-group">
+                        <label>EMAIL</label>
+                        <input type="email" class="plush-input" placeholder="tu@email.com">
+                    </div>
+                    <div class="input-group">
+                        <label>CONTRASEÑA</label>
+                        <input type="password" class="plush-input" placeholder="••••••••">
+                    </div>
+                    <button type="button" class="btn-plump" style="width: 100%;"
+                        onclick="router('dashboard')">Entrar</button>
+                </form>
+
+                <form id="form-user-reg" class="hidden fade-in">
+                    <div class="input-group">
+                        <label>NOMBRE COMPLETO</label>
+                        <input type="text" class="plush-input" placeholder="Juan Pérez">
+                    </div>
+                    <div class="input-group">
+                        <label>EMAIL</label>
+                        <input type="email" class="plush-input" placeholder="tu@email.com">
+                    </div>
+                    <div class="input-group">
+                        <label>MASCOTA (OPCIONAL)</label>
+                        <input type="text" class="plush-input" placeholder="Nombre de tu peludo">
+                    </div>
+                    <button type="button" class="btn-plump btn-secondary" style="width: 100%;"
+                        onclick="alert('Registro exitoso'); router('dashboard')">Crear Cuenta</button>
+                </form>
+
+                <form id="form-sitter-reg" class="hidden fade-in">
+                    <div class="input-group">
+                        <label>NOMBRE COMPLETO</label>
+                        <input type="text" class="plush-input" placeholder="Ana García">
+                    </div>
+                    <div class="input-group">
+                        <label>EXPERIENCIA (Años)</label>
+                        <input type="number" class="plush-input" placeholder="2">
+                    </div>
+                    <div class="input-group">
+                        <label>TARIFA POR HORA ($)</label>
+                        <input type="number" class="plush-input" placeholder="15">
+                    </div>
+                    <div class="input-group">
+                        <label>BIografía CORTA</label>
+                        <textarea class="plush-input" rows="3" placeholder="Amo a los perros..."></textarea>
+                    </div>
+                    <button type="button" class="btn-plump btn-lavender" style="width: 100%;"
+                        onclick="alert('Solicitud enviada'); router('home')">Aplicar como Cuidador</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- VIEW: DASHBOARD -->
+    <div id="view-dashboard" class="container hidden fade-in">
+        <div
+            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 15px;">
+            <h2 style="font-size: 1.8rem;">Bitácora de Cuidado</h2>
+            <button class="btn-plump" style="width: auto; padding: 12px 20px;"
+                onclick="alert('Subir nueva foto/video')">+ Nueva</button>
+        </div>
+
+        <div class="plush-volume" style="padding: 20px;">
+            <div class="log-entry">
+                <img src="https://image.qwenlm.ai/public_source/95de1b57-21f3-454f-82dc-cae74063b684/1a7a3aca6-61a4-46db-ae00-2733414dd0e4.png"
+                    class="log-img" alt="Log">
+                <div class="log-content">
+                    <div class="log-time">Hoy, 14:30 PM • Paseo</div>
+                    <h3 style="margin: 5px 0; font-size: 1rem;">Paseo por el parque</h3>
+                    <p style="opacity: 0.8; font-size: 0.85rem;">Mochi jugó mucho con otros perros.</p>
+                </div>
+            </div>
+            <div class="log-entry">
+                <img src="https://image.qwenlm.ai/public_source/95de1b57-21f3-454f-82dc-cae74063b684/1a6ec3814-bed0-43ae-9222-9a378243ab02.png"
+                    class="log-img" alt="Log" style="filter: hue-rotate(90deg);">
+                <div class="log-content">
+                    <div class="log-time">Ayer, 09:00 AM • Comida</div>
+                    <h3 style="margin: 5px 0; font-size: 1rem;">Desayuno servido</h3>
+                    <p style="opacity: 0.8; font-size: 0.85rem;">Comió toda su ración premium.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BOOKING MODAL -->
+    <div id="booking-modal" class="modal-overlay">
+        <div class="modal-content plush-volume">
+            <button class="close-modal" onclick="closeBooking()">✕</button>
+            <h2 style="margin-bottom: 1rem; font-size: 1.5rem;">Reservar Servicio</h2>
+            <p id="modal-sitter-name" style="margin-bottom: 1.5rem; font-weight: 600; color: #888;">Con...</p>
+
+            <div class="input-group">
+                <label>FECHA</label>
+                <input type="date" class="plush-input">
+            </div>
+            <div class="input-group">
+                <label>HORAS</label>
+                <input type="number" class="plush-input" value="2">
+            </div>
+
+            <div
+                style="background: #f9f9f9; padding: 15px; border-radius: 20px; margin-bottom: 20px; text-align: left;">
+                <div style="display: flex; justify-content: space-between;">
+                    <span>Subtotal</span>
+                    <span>$30.00</span>
+                </div>
+                <div
+                    style="display: flex; justify-content: space-between; margin-top: 5px; font-weight: bold; border-top: 1px dashed #ccc; padding-top: 10px;">
+                    <span>Total</span>
+                    <span>$30.00</span>
+                </div>
+            </div>
+
+            <button class="btn-plump" style="width: 100%;"
+                onclick="alert('¡Reserva confirmada!'); closeBooking(); router('dashboard');">Pagar y Reservar</button>
+        </div>
+    </div>
+
+    <!-- TERMS MODAL -->
+    <div id="terms-modal" class="modal-overlay">
+        <div class="modal-content plush-volume">
+            <button class="close-modal" onclick="closeTermsModal()">✕</button>
+            <h2 style="margin-bottom: 1rem; font-size: 1.5rem;">Términos y Condiciones</h2>
+            <div
+                style="text-align: left; line-height: 1.8; opacity: 0.8; font-size: 0.9rem; max-height: 300px; overflow-y: auto;">
+                <p style="margin-bottom: 1rem;"><strong>1. Aceptación</strong><br>Al usar PawFriends, aceptas estos
+                    términos.</p>
+                <p style="margin-bottom: 1rem;"><strong>2. Servicios</strong><br>Conectamos dueños con cuidadores
+                    verificados.</p>
+                <p style="margin-bottom: 1rem;"><strong>3. Pagos</strong><br>Procesados de forma segura en la
+                    plataforma.</p>
+                <p style="margin-bottom: 1rem;"><strong>4. Cancelaciones</strong><br>24 horas de anticipación para
+                    reembolso.</p>
+                <p style="margin-bottom: 1rem;"><strong>5. Privacidad</strong><br>Tus datos están protegidos.</p>
+                <p style="font-family: 'Space Mono'; font-size: 0.65rem; margin-top: 1rem;">Última actualización: Enero
+                    2024</p>
+            </div>
+            <button class="btn-plump" style="margin-top: 1.5rem; width: 100%;"
+                onclick="closeTermsModal()">Entendido</button>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="logo" style="margin-bottom: 1rem;">
+                    <div class="logo-icon">🐶</div>
+                    PawFriends
+                </div>
+                <p>Conectando corazones peludos con cuidadores amorosos desde 2024.</p>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="Tu email...">
+                    <button type="button">→</button>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h4>Enlaces</h4>
+                <ul class="footer-links">
+                    <li><a href="#" onclick="router('home')">Inicio</a></li>
+                    <li><a href="#" onclick="router('sitters')">Cuidadores</a></li>
+                    <li><a href="#" onclick="router('foundations')">Fundaciones</a></li>
+                    <li><a href="#" onclick="router('auth')">Registrarse</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Servicios</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Paseo de Perros</a></li>
+                    <li><a href="#">Cuidado en Casa</a></li>
+                    <li><a href="#">Hospedaje</a></li>
+                    <li><a href="#">Veterinario</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Síguenos</h4>
+                <div class="social-icons">
+                    <div class="social-icon"><img
+                            src="https://image.qwenlm.ai/public_source/95de1b57-21f3-454f-82dc-cae74063b684/10a6fc948-04e5-46ca-835c-1dd08026517c.png"
+                            style="clip-path: inset(0 50% 50% 0);" alt="IG"></div>
+                    <div class="social-icon"><img
+                            src="https://image.qwenlm.ai/public_source/95de1b57-21f3-454f-82dc-cae74063b684/10a6fc948-04e5-46ca-835c-1dd08026517c.png"
+                            style="clip-path: inset(0 0 50% 50%);" alt="FB"></div>
+                    <div class="social-icon"><img
+                            src="https://image.qwenlm.ai/public_source/95de1b57-21f3-454f-82dc-cae74063b684/10a6fc948-04e5-46ca-835c-1dd08026517c.png"
+                            style="clip-path: inset(50% 50% 0 0);" alt="TW"></div>
+                    <div class="social-icon"><img
+                            src="https://image.qwenlm.ai/public_source/95de1b57-21f3-454f-82dc-cae74063b684/10a6fc948-04e5-46ca-835c-1dd08026517c.png"
+                            style="clip-path: inset(50% 0 0 50%);" alt="TK"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2024 PawFriends. Todos los derechos reservados.</p>
+            <div class="legal-links">
+                <a href="#" onclick="openTermsModal()">Términos</a>
+                <a href="#">Privacidad</a>
+                <a href="#">Cookies</a>
+                <a href="#">Contacto</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+
+</html>
