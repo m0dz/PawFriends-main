@@ -1,4 +1,4 @@
-        :root {
+:root {
             --base-bg: #fdf5f7;
             --satin-peach: #ffdfd3;
             --satin-mint: #d4f0f0;
@@ -91,22 +91,22 @@
             letter-spacing: -0.5px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: -0.5px;
             cursor: pointer;
         }
 
         .logo-icon {
-            width: 40px;
-            height: 40px;
+            width: 150px;
+            height: auto;
             background: var(--satin-peach);
-            border-radius: 12px;
+            border-radius: 0.5px;
             display: flex;
             align-items: center;
             justify-content: center;
             box-shadow: var(--inner-glow);
         }
 
-        /* Hamburger Menu */
+        /* menu Hamburguesa */
         .menu-toggle {
             display: flex;
             flex-direction: column;
@@ -138,7 +138,7 @@
             transform: rotate(-45deg) translate(6px, -6px);
         }
 
-        /* Mobile Navigation Menu */
+        /* nav bar movil */
         .nav-menu {
             position: fixed;
             top: 0;
@@ -193,7 +193,7 @@
             display: none;
         }
 
-        /* --- BUTTONS (Mobile First) --- */
+        /* --- Botones (Mobile First) --- */
         .btn-plump {
             padding: 14px 24px;
             border-radius: 25px;
@@ -345,6 +345,7 @@
             animation: float 6s ease-in-out infinite;
         }
 
+        /* imagen flotante de destacado */
         @keyframes float {
 
             0%,
@@ -486,7 +487,7 @@
             font-family: 'Fredoka', sans-serif;
             font-size: 1rem;
             transition: all 0.3s;
-            min-height: 50px;
+            min-height: 40px;
         }
 
         .plush-input:focus {
@@ -682,29 +683,25 @@
 
         .social-icons {
             display: flex;
-            gap: 12px;
+            gap: 15px;
             flex-wrap: wrap;
         }
 
         .social-icon {
-            width: 45px;
-            height: 45px;
-            border-radius: 15px;
+            width:  44px;
+            height: 44px;
+            border-radius: 20px;
             overflow: hidden;
             transition: transform 0.3s;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 5px 5px rgba(0, 0, 0, 0.1);
             cursor: pointer;
         }
 
         .social-icon:hover {
-            transform: scale(1.1);
+            transform: scale(1.2);
         }
 
-        .social-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+        
 
         .footer-bottom {
             max-width: 1400px;
@@ -799,6 +796,8 @@
 
             .btn-plump {
                 width: auto;
+                /* borde mas pequeño */
+                min-height: auto;
             }
 
             .card-grid {
@@ -920,3 +919,72 @@
                 grid-template-columns: repeat(4, 1fr);
             }
         }
+        /* ─── PATITAS DE FONDO ─── */
+
+
+        /* Borde izquierdo */
+            .paws-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 80px;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='120' viewBox='0 0 80 120'%3E%3Ccircle cx='40' cy='75' r='14' fill='%23ff8e8e' opacity='0.35'/%3E%3Ccircle cx='22' cy='52' r='9' fill='%23ff8e8e' opacity='0.35'/%3E%3Ccircle cx='40' cy='44' r='9' fill='%23ff8e8e' opacity='0.35'/%3E%3Ccircle cx='58' cy='52' r='9' fill='%23ff8e8e' opacity='0.35'/%3E%3C/svg%3E");
+            background-size: 80px 120px;
+            background-repeat: repeat-y;
+            animation: pawsLeft 6s linear infinite;
+            }
+
+        /* Borde derecho */
+            .paws-bg::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 80px;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='120' viewBox='0 0 80 120'%3E%3Ccircle cx='40' cy='75' r='14' fill='%23ff8e8e' opacity='0.35'/%3E%3Ccircle cx='22' cy='52' r='9' fill='%23ff8e8e' opacity='0.35'/%3E%3Ccircle cx='40' cy='44' r='9' fill='%23ff8e8e' opacity='0.35'/%3E%3Ccircle cx='58' cy='52' r='9' fill='%23ff8e8e' opacity='0.35'/%3E%3C/svg%3E");
+            background-size: 80px 120px;
+            background-repeat: repeat-y;
+            animation: pawsRight 6s linear infinite;
+            }
+
+
+
+        /* Animaciones */
+            @keyframes pawsLeft {
+            from { background-position: 0 0; }
+            to { background-position: 0 120px; }
+            }
+
+            @keyframes pawsRight {
+            from { background-position: 0 0; }
+            to { background-position: 0 -120px; }
+            }
+
+        /* redes sociales  */
+            .social-icon {
+            background: var(--satin-coral);  /* sobreescribe el estilo anterior */
+            }
+
+            .social-icon a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            }
+
+            .social-icon svg {
+            width: 22px;
+            height: 22px;
+            }
+            /* alinear fundaciones */
+            .foundation-card {
+    justify-content: space-between;
+}
+
+.foundation-card p {
+    flex: 1;
+}
