@@ -75,6 +75,64 @@ document.querySelectorAll('.modal-overlay').forEach(overlay => {
     });
 });
 
+// Datos de cuidadores (permite filtro por comuna)
+const sitters = [
+    { name: 'Ana G.', service: 'Cuidado en casa', size: 'Pequeño', comuna: 'Ñuñoa', price: 18, description: 'Amante de los gatos y expertos en medicación.' },
+    { name: 'Carlos M.', service: 'Paseo', size: 'Mediano', comuna: 'Providencia', price: 20, description: 'Paseos largos y entrenamiento básico.' },
+    { name: 'María P.', service: 'Veterinario', size: 'Grande', comuna: 'Las Condes', price: 22, description: 'Asistencia en visitas veterinarias y cuidados especiales.' },
+    { name: 'Javier R.', service: 'Paseo', size: 'Grande', comuna: 'Santiago', price: 17, description: 'Rutinas de ejercicio y socialización.' },
+    { name: 'Claudia V.', service: 'Cuidado en casa', size: 'Pequeño', comuna: 'La Florida', price: 19, description: 'Con experiencia en cachorros y gatitos.' },
+    { name: 'Felipe T.', service: 'Veterinario', size: 'Mediano', comuna: 'Maipú', price: 21, description: 'Soporte técnico y seguimiento médico diario.' }
+];
+
+function renderSitters() {
+    const grid = document.getElementById('sitters-grid');
+    if (!grid) return;
+
+    const service = document.getElementById('filter-service')?.value || 'all';
+    const size = document.getElementById('filter-size')?.value || 'all';
+    const comuna = document.getElementById('filter-comuna')?.value || 'all';
+
+    const filtered = sitters.filter(sitter => {
+        const serviceMatch = service === 'all' || sitter.service === service;
+        const sizeMatch = size === 'all' || sitter.size === size;
+        const comunaMatch = comuna === 'all' || sitter.comuna === comuna;
+        return serviceMatch && sizeMatch && comunaMatch;
+    });
+
+    if (filtered.length === 0) {
+        grid.innerHTML = '<p style="font-size: 1rem; color: #555;">No se encontraron cuidadores con esos filtros.</p>';
+        return;
+    }
+
+    grid.innerHTML = filtered.map((sitter, i) => `
+        <div class="plush-card" style="animation-delay:${i * 0.05}s;">
+            <img src="https://image.qwenlm.ai/public_source/95de1b57-21f3-454f-82dc-cae74063b684/1a6ec3814-bed0-43ae-9222-9a378243ab02.png" class="card-img" style="filter: hue-rotate(${(i + 1) * 40}deg);" alt="${sitter.name}">
+            <div class="card-meta">
+                <h3>${sitter.name}</h3>
+                <span class="price-tag">$${sitter.price}/h</span>
+            </div>
+            <p style="opacity: 0.7; font-size: 0.9rem;">${sitter.description}</p>
+            <p style="font-size: 0.85rem; margin-top: 0.4rem;">Servicio: ${sitter.service} • Tamaño: ${sitter.size} • Comuna: ${sitter.comuna}</p>
+            <button class="btn-plump btn-secondary" style="width: 100%; margin-top: auto;" onclick="openBooking('${sitter.name}')">Reservar</button>
+        </div>
+    `).join('');
+}
+
+const filterButton = document.getElementById('btn-filter-sitters');
+if (filterButton) {
+    filterButton.addEventListener('click', renderSitters);
+}
+
+// Asegurar renderizado cuando se navega a la vista de cuidadores
+const originalRouter = router;
+router = function(viewId) {
+    originalRouter(viewId);
+    if (viewId === 'sitters') {
+        renderSitters();
+    }
+};
+
 // Initialize
 router('home');
 
