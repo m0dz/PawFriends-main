@@ -13,13 +13,14 @@
 </head>
 
 <body>
-    <!-- patitas laterales -->
+
+  <!-- patitas laterales -->
     <div class="paws-bg" aria-hidden="true"></div>
 
     <!-- NAV (Mobile First) -->
     <nav>
         <div class="logo" onclick="router('home')">
-            <img src="/elements/logo.png" class="logo-icon"</img>
+             <img src="/elements/logo.png" class="logo-icon"</img>
             PawFriends
         </div>
 
@@ -30,15 +31,17 @@
             <span></span>
         </button>
 
-        <!-- navegacion secciones nav bar -->
+        <!-- Desktop Navigation -->
         <div class="nav-links">
             <div class="nav-item" onclick="router('home')">Inicio</div>
+            <div class="nav-item" onclick="router('servicios')">Servicios</div>
             <div class="nav-item" onclick="router('sitters')">Cuidadores</div>
             <div class="nav-item" onclick="router('foundations')">Fundaciones</div>
+            <div class="nav-item" onclick="router('faq')">Preguntas</div>
             <div class="nav-item" onclick="router('dashboard')">Mi Cuenta</div>
         </div>
 
-        <!-- acceso secciones de cuidador y login -->
+        <!-- Desktop CTA Buttons -->
         <div class="nav-cta-desktop">
             <button class="btn-plump btn-caretaker" onclick="switchAuthTab('sitter-reg'); router('auth'); toggleMenu()"
                 style="padding: 10px 20px; font-size: 0.9rem;">
@@ -49,11 +52,13 @@
         </div>
     </nav>
 
-    <!-- Menu de navegacion movil -->
+    <!-- menu navegacion movil -->
     <div class="nav-menu" id="navMenu">
         <a href="#" onclick="router('home'); toggleMenu()">Inicio</a>
+        <a href="#" onclick="router('servicios'); toggleMenu()">Servicios</a>
         <a href="#" onclick="router('sitters'); toggleMenu()">Cuidadores</a>
         <a href="#" onclick="router('foundations'); toggleMenu()">Fundaciones</a>
+        <a href="#" onclick="router('faq'); toggleMenu()">Preguntas</a>
         <a href="#" onclick="router('dashboard'); toggleMenu()">Mi Cuenta</a>
 
         <div class="nav-menu-cta">
@@ -68,7 +73,6 @@
     <main id="view-home" class="container fade-in">
         <div class="hero">
             <div class="hero-content">
-                
                 <h1>Manos Suaves.<span>Corazones Cálidos.</span></h1>
                 <p style="font-size: 1rem; line-height: 1.6; opacity: 0.8; margin-bottom: 1rem;">
                     La experiencia premium satinada para tus amigos peludos. Conectamos a tus mascotas con cuidadores
@@ -132,19 +136,9 @@
                 </div>
             </div>
         </div>
-
-        <!-- WEATHER WIDGET -->
-        <div style="margin-top: 3rem;">
-            <h2 style="font-size: 1.4rem; margin-bottom: 0.75rem;">Clima</h2>
-            <form id="weather-form" style="display:flex; gap:8px; max-width:420px;">
-                <input id="city-input" type="text" class="plush-input" placeholder="Ingresa una ciudad (ej. Madrid)" style="flex:1;">
-                <button class="btn-plump" type="submit" style="padding: 10px 14px;">Ver</button>
-            </form>
-            <div id="weather-result" style="margin-top:10px; font-weight:600; opacity:0.9;">Ingresa una ciudad y presiona Ver.</div>
-        </div>
     </main>
 
-    <!-- VIEW: SITTERS LIST -->
+    <!-- VIEW: LISTA CUIDADORES -->
     <div id="view-sitters" class="container hidden fade-in">
         <h2 style="font-size: 2rem; margin-bottom: 1rem;">Encuentra tu Cuidador Ideal</h2>
 
@@ -161,7 +155,7 @@
                 <option>Mediano</option>
                 <option>Grande</option>
             </select>
-            <button class="btn-plump" style="padding: 12px 15px; font-size: 0.9rem; width: auto;">Filtrar</button>
+            <button class="btn-plump" style="padding: 12px 20px; font-size: 0.9rem;">Filtrar</button>
         </div>
 
         <div class="card-grid">
@@ -183,7 +177,7 @@
         </div>
     </div>
 
-    <!-- VIEW: FOUNDATIONS -->
+    <!-- VIEW: FUNDACIONES AMIGAS -->
     <div id="view-foundations" class="container hidden fade-in">
         <h2 style="font-size: 2rem; margin-bottom: 1rem;">Fundaciones Amigas</h2>
         <p style="margin-bottom: 1.5rem; opacity: 0.8;">Apoya a quienes cuidan de los que no tienen voz.</p>
@@ -206,8 +200,7 @@
                 <img src="https://image.qwenlm.ai/public_source/95de1b57-21f3-454f-82dc-cae74063b684/11187cd8b-956a-4242-9fba-e883d987a3b9.png"
                     class="foundation-logo" alt="Logo" style="filter: hue-rotate(90deg);">
                 <h3>Gatos en el Techo</h3>
-                <p style="margin: 10px 0; font-size: 0.9rem;">Colonias felinas y esterilización gratuita.</p><br>
-                
+                <p style="margin: 10px 0; font-size: 0.9rem;">Colonias felinas y esterilización gratuita.</p>
                 <div
                     style="font-family: 'Space Mono'; font-size: 0.75rem; background: #f0f0f0; padding: 10px; border-radius: 15px; width: 100%;">
                     📞 +55 9876 5432<br>
@@ -284,7 +277,7 @@
         </div>
     </div>
 
-    <!-- VIEW: DASHBOARD -->
+    <!-- VIEW: BITACORA -->
     <div id="view-dashboard" class="container hidden fade-in">
         <div
             style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 15px;">
@@ -349,73 +342,235 @@
         </div>
     </div>
 
-    <!-- TERMS MODAL -->
-    <div id="terms-modal" class="modal-overlay">
-        <div class="modal-content plush-volume">
-            <button class="close-modal" onclick="closeTermsModal()">✕</button>
-            <h2 style="margin-bottom: 1rem; font-size: 1.5rem;">Términos y Condiciones</h2>
-            <div
-                style="text-align: left; line-height: 1.8; opacity: 0.8; font-size: 0.9rem; max-height: 300px; overflow-y: auto;">
-                <p style="margin-bottom: 1rem;"><strong>1. Aceptación</strong><br>Al usar PawFriends, aceptas estos
-                    términos.</p>
-                <p style="margin-bottom: 1rem;"><strong>2. Servicios</strong><br>Conectamos dueños con cuidadores
-                    verificados.</p>
-                <p style="margin-bottom: 1rem;"><strong>3. Pagos</strong><br>Procesados de forma segura en la
-                    plataforma.</p>
-                <p style="margin-bottom: 1rem;"><strong>4. Cancelaciones</strong><br>24 horas de anticipación para
-                    reembolso.</p>
-                <p style="margin-bottom: 1rem;"><strong>5. Privacidad</strong><br>Tus datos están protegidos.</p>
-                <p style="font-family: 'Space Mono'; font-size: 0.65rem; margin-top: 1rem;">Última actualización: Enero
-                    2024</p>
+<div id="view-faq" class="container hidden fade-in">
+    <div class="plush-volume" style="padding: 40px; margin-top: 30px; margin-bottom: 50px;">
+        <h2 style="text-align: center; margin-bottom: 30px;">Centro de Ayuda PawFriends Chile 🐾</h2>
+
+        <div class="faq-tabs">
+            <button class="faq-tab-btn active" onclick="switchFaqTab('tutores')">Para Tutores</button>
+            <button class="faq-tab-btn" onclick="switchFaqTab('cuidadores')">Para Cuidadores</button>
+        </div>
+
+        <div id="faq-tutores" class="faq-content-pane">
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">¿Cómo elijo al cuidador más confiable? <span>+</span></button>
+                <div class="faq-answer"><p>Nuestra plataforma ofrece perfiles detallados donde puedes inspeccionar fotografías reales de las viviendas y leer las reseñas auténticas dejadas por otros usuarios. Es fundamental revisar las puntuaciones y los comentarios específicos sobre experiencias previas, ya que esto refleja de manera transparente la calidad y el compromiso del cuidador. Habilitamos un chat privado para que realices todas las consultas necesarias, preguntes por la rutina diaria y conozcas la disposición del cuidador antes de formalizar cualquier reserva. Recuerda que PawFriends facilita el contacto y la verificación de identidad, pero la decisión final de contratar basándose en la información del perfil es responsabilidad exclusiva del dueño.</p></div>
             </div>
-            <button class="btn-plump" style="margin-top: 1.5rem; width: 100%;"
-                onclick="closeTermsModal()">Entendido</button>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">¿Qué debo entregar para la alimentación y salud? <span>+</span></button>
+                <div class="faq-answer"><p>Es responsabilidad del tutor entregar la alimentación habitual en cantidad suficiente para todo el periodo, evitando cambios de dieta que provoquen desajustes gástricos. Si la mascota requiere medicamentos, deben entregarse en sus envases originales con instrucciones escritas detallando dosis y horarios exactos. El tutor debe asegurarse de que el cuidador acepte y comprenda la responsabilidad de administrar dichos fármacos antes de confirmar el servicio. PawFriends no asume responsabilidad por errores en la administración de tratamientos o reacciones alérgicas, siendo un acuerdo directo de confianza mutua.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">¿Qué pasa si mi mascota necesita un veterinario? <span>+</span></button>
+                <div class="faq-answer"><p>Ante cualquier signo de enfermedad o accidente, el cuidador tiene la obligación de contactar al tutor de inmediato. El tutor debe indicar previamente cuál es su veterinario de cabecera y autorizar el traslado si la situación lo amerita, asumiendo todos los costos médicos, de transporte y honorarios resultantes de la atención profesional. PawFriends no ofrece seguros médicos ni reembolsos por enfermedades preexistentes o incidentes fortuitos. La plataforma actúa únicamente como puente de comunicación para que el tutor tome decisiones informadas sobre la salud de su mascota en tiempo real.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">Protocolo de Tiempo Extra (10 minutos) <span>+</span></button>
+                <div class="faq-answer"><p>El tiempo del cuidador es valioso; por ello, si el tutor se retrasa más de 10 minutos de la hora pactada (ya sea para retiro o recepción en puerta), se activará un protocolo de cobro automático. Este cargo se procesará directamente a la tarjeta registrada por concepto de "Custodia Adicional". Es responsabilidad del tutor ser puntual y mantener la comunicación fluida, ya que el sistema está programado para proteger la agenda del prestador tras cumplirse el breve tiempo de gracia inicial de 10 minutos.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">¿Cómo se gestionan los cobros por daños? <span>+</span></button>
+                <div class="faq-answer"><p>En caso de que una mascota cause daños materiales comprobables en el hogar del cuidador, el tutor acepta la responsabilidad de un cobro directo de reparación en su tarjeta registrada. El cuidador presentará evidencia en video y fotografías detalladas que comprueben que el incidente ocurrió durante el servicio. Nuestro equipo de soporte validará las pruebas antes de procesar el cargo correspondiente. Este sistema garantiza que los prestadores no pierdan dinero por conductas imprevistas de los animales, fomentando una comunidad basada en la transparencia.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">¿Qué sucede en caso de abandono (Ley Cholito)? <span>+</span></button>
+                <div class="faq-answer"><p>Si finaliza la reserva y el tutor no se presenta ni responde a los contactos tras agotar todos los medios, se inicia el protocolo de abandono bajo la Ley de Tenencia Responsable en Chile. El cuidador está facultado y obligado a realizar la denuncia correspondiente ante Carabineros o la PDI. PawFriends entregará toda la información del tutor para las acciones legales necesarias, pero bajo ningún concepto la plataforma se hará cargo del animal. Es un caso legal grave donde la responsabilidad penal recae sobre el tutor por abandono.</p></div>
+            </div>
+        </div>
+
+        <div id="faq-cuidadores" class="faq-content-pane hidden">
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">¿Por qué es obligatoria la Clave Única? <span>+</span></button>
+                <div class="faq-answer"><p>Para formar parte de nuestra red, es estrictamente obligatorio validar tu identidad mediante Clave Única, asegurando que tus datos coinciden con los registros oficiales del Estado chileno. Junto con esta validación digital, exigimos el Certificado de Antecedentes actualizado para verificar la idoneidad del prestador. Este doble filtro permite que los usuarios confíen en PawFriends y elijan tu perfil. Sin estos documentos validados por nuestro equipo, el perfil de cuidador no podrá ser activado ni figurar en los resultados de búsqueda.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">¿Cómo actúo ante una emergencia veterinaria? <span>+</span></button>
+                <div class="faq-answer"><p>En caso de detectar síntomas de enfermedad o una emergencia, debes contactar al tutor de inmediato. Debes seguir las instrucciones del dueño respecto al veterinario de cabecera y, en caso de urgencia vital, trasladar a la mascota al centro asistencial más cercano previa comunicación. Es vital documentar la situación y guardar todos los comprobantes de gastos médicos para que el tutor realice el reembolso, ya que PawFriends no cubre gastos veterinarios. Tu rol es de custodio temporal, por lo que la decisión final médica siempre debe ser validada por el dueño.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">¿Cómo me protejo ante retrasos o daños? <span>+</span></button>
+                <div class="faq-answer"><p>Nuestra plataforma cuenta con protocolos automatizados para proteger tu tiempo y tu espacio; si un tutor se retrasa más de 10 minutos, puedes reportar la incidencia para generar un cobro extra por tiempo de custodia. En caso de daños materiales, debes grabar un video y tomar fotos inmediatamente como evidencia para que nuestro equipo procese el cobro de reparación a la tarjeta del tutor. Es fundamental que toda la comunicación se mantenga dentro de PawFriends para que podamos intervenir legalmente y realizar los cargos automáticos.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">¿Soy empleado de PawFriends o independiente? <span>+</span></button>
+                <div class="faq-answer"><p>No existe ninguna relación laboral entre el cuidador y PawFriends; actúas como un prestador de servicios totalmente independiente. Tienes total autonomía para decidir tus propios horarios, qué mascotas aceptas y definir tu metodología de trabajo. PawFriends provee únicamente la infraestructura tecnológica para el contacto y gestiona la pasarela de pagos para asegurar que recibas tu dinero de forma garantizada tras finalizar el servicio. Eres responsable del cumplimiento de las promesas hechas en tu perfil.</p></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="view-about" class="container hidden fade-in">
+    <div class="plush-volume" style="padding: 20px; margin-top: 30px; margin-bottom: 50px; background-color: #fcfcfc;">
+
+        <div class="about-story-container" style="padding: 40px;">
+            <div class="story-text-column">
+                <h2>Nuestra Historia</h2>
+                <p>PawFriends nació en 2026 de una necesidad simple: como dueños de mascotas ocupados, queríamos asegurarnos de que nuestros perros recibieran el ejercicio y la atención que merecían, incluso en días agitados.</p>
+                <p class="story-p">Fundada por un equipo de seis profesionales apasionados por los animales y la tecnología durante un intenso Bootcamp de Desarrollo, PawFriends se creó para resolver un problema común: encontrar cuidadores confiables y verificados en Chile. Hoy, nos enorgullece ser una plataforma que une la innovación técnica con el amor animal, operando siempre bajo el marco de la Ley de Tenencia Responsable.</p>
+            </div>
+
+            <div class="story-image-column">
+                <img src="https://image.qwenlm.ai/public_source/95de1b57-21f3-454f-82dc-cae74063b684/1a7a3aca6-61a4-46db-ae00-2733414dd0e4.png" alt="Perrito feliz" class="plush-image-shadow">
+            </div>
+        </div>
+
+        <div class="values-section-container" style="padding: 40px;">
+            <h2 class="about-section-title">Nuestros Valores</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon-circle blue-light">❤️</div>
+                    <h3>Amor por los Animales</h3>
+                    <p>Cada mascota es tratada con el amor y el cuidado que merece en cada momento.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon-circle green-light">🛡️</div>
+                    <h3>Seguridad Primero</h3>
+                    <p>Cuidadores verificados y protocolos estrictos para garantizar la tranquilidad.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon-circle purple-light">👥</div>
+                    <h3>Comunidad</h3>
+                    <p>Construimos relaciones duraderas entre dueños de mascotas y cuidadores.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon-circle yellow-light">⭐</div>
+                    <h3>Excelencia</h3>
+                    <p>Nos esforzamos por superar las expectativas en cada servicio que ofrecemos.</p>
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="commitment-container" style="padding: 40px;">
+            <div class="commitment-card">
+                <h2>Nuestro Compromiso</h2>
+                <p class="commitment-intro">En PawFriends, estamos comprometidos con la excelencia en cada aspecto de nuestro servicio:</p>
+                <ul class="commitment-list">
+                    <li><strong>Verificación rigurosa:</strong> Validación exhaustiva de antecedentes y Clave Única.</li>
+                    <li><strong>Seguridad garantizada:</strong> Protocolos alineados con la Ley de Tenencia Responsable.</li>
+                    <li><strong>Transparencia total:</strong> Comunicación fluida entre dueños y cuidadores.</li>
+                    <li><strong>Soporte 24/7:</strong> Nuestro equipo está disponible siempre que nos necesites.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="view-servicios" class="container hidden fade-in">
+        <div class="plush-volume" style="padding: 40px; margin-top: 30px; margin-bottom: 50px; background-color: #fcfcfc;">
+            
+            <div class="about-section-title" style="text-align: center; margin-bottom: 40px;">
+                <h2 style="font-size: 2.2rem;">Cuidado <span>con Amor</span></h2>
+            </div>
+
+            <div class="card-grid">
+                <div class="plush-card" style="text-align: center;">
+                    <div style="font-size: 3rem; margin-bottom: 15px; background: #ffe5d9; width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; border-radius: 25px; margin: 0 auto 20px;">🐕</div>
+                    <h3>Paseos</h3>
+                    <p style="opacity: 0.7; font-size: 0.9rem;">Rutas de exploración seguras para que tu perro libere energía con total diversión.</p>
+                </div>
+
+                <div class="plush-card" style="text-align: center;">
+                    <div style="font-size: 3rem; margin-bottom: 15px; background: #e2f0cb; width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; border-radius: 25px; margin: 0 auto 20px;">🏡</div>
+                    <h3>Alojamiento</h3>
+                    <p style="opacity: 0.7; font-size: 0.9rem;">Estancias en casa de un cuidador donde será tratado como parte de la familia.</p>
+                </div>
+
+                <div class="plush-card" style="text-align: center;">
+                    <div style="font-size: 3rem; margin-bottom: 15px; background: #e0bbe4; width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; border-radius: 25px; margin: 0 auto 20px;">🐈</div>
+                    <h3>Visitas</h3>
+                    <p style="opacity: 0.7; font-size: 0.9rem;">Cuidado, juego y alimentación en la comodidad de su propio hogar.</p>
+                </div>
+
+                <div class="plush-card" style="text-align: center;">
+                    <div style="font-size: 3rem; margin-bottom: 15px; background: #d4f0f0; width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; border-radius: 25px; margin: 0 auto 20px;">🚐</div>
+                    <h3>Taxi-Patas</h3>
+                    <p style="opacity: 0.7; font-size: 0.9rem;">Transporte seguro para sus citas médicas o traslados especiales.</p>
+                </div>
+
+                <div class="plush-card" style="text-align: center;">
+                    <div style="font-size: 3rem; margin-bottom: 15px; background: #ffe5d9; width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; border-radius: 25px; margin: 0 auto 20px;">🌙</div>
+                    <h3>Cuidado Nocturno</h3>
+                    <p style="opacity: 0.7; font-size: 0.9rem;">Compañía exclusiva durante la noche para que nunca se sientan solos.</p>
+                </div>
+
+                <div class="plush-card" style="text-align: center;">
+                    <div style="font-size: 3rem; margin-bottom: 15px; background: #e2f0cb; width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; border-radius: 25px; margin: 0 auto 20px;">🗓️</div>
+                    <h3>Estancias Largas</h3>
+                    <p style="opacity: 0.7; font-size: 0.9rem;">Hospedaje por días o semanas con reportes diarios de su felicidad.</p>
+                </div>
+
+                <div class="plush-card" style="text-align: center;">
+                    <div style="font-size: 3rem; margin-bottom: 15px; background: #e0bbe4; width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; border-radius: 25px; margin: 0 auto 20px;">🩺</div>
+                    <h3>Citas Médicas</h3>
+                    <p style="opacity: 0.7; font-size: 0.9rem;">Acompañamiento logístico al veterinario (traslado y espera puntual).</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 60px; text-align: center;">
+                <h3 style="margin-bottom: 25px;">Servicios Adicionales</h3>
+                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px;">
+                    <span style="border: 2px dashed #ffb7b2; padding: 10px 20px; border-radius: 50px; font-weight: 600; color: #4a4a4a;">🎾 Guardería de Día</span>
+                    <span style="border: 2px dashed #ffb7b2; padding: 10px 20px; border-radius: 50px; font-weight: 600; color: #4a4a4a;">📸 Sesión de Fotos</span>
+                    <span style="border: 2px dashed #ffb7b2; padding: 10px 20px; border-radius: 50px; font-weight: 600; color: #4a4a4a;">🧼 Spa de Burbujas</span>
+                    <span style="border: 2px dashed #ffb7b2; padding: 10px 20px; border-radius: 50px; font-weight: 600; color: #4a4a4a;">✨ Higiene Básica</span>
+                </div>
+            </div>
         </div>
     </div>
 
+
+
     <!-- FOOTER -->
     <footer class="site-footer">
+        
         <div class="footer-content">
+            
             <div class="footer-section">
                 <div class="logo" style="margin-bottom: 1rem;">
-                    <img src="logo.png" class="logo-icon"</img> PawFriends
-                </div>
+                    <img src="/elements/logo.png" class="logo-footer"</img>
+            
+                </div class=eslogan >
                 <p>Conectando corazones peludos con cuidadores amorosos desde 2024.</p>
                 <div class="newsletter-form">
-                    <input type="email" placeholder="Tu email...">
-                    <button type="button">→</button>
+                   
                 </div>
+                
             </div>
 
             <div class="footer-section">
-                <h4>Enlaces</h4>
-                <ul class="footer-links">
-                    <li><a href="#" onclick="router('home')">Inicio</a></li>
-                    <li><a href="#" onclick="router('sitters')">Cuidadores</a></li>
-                    <li><a href="#" onclick="router('foundations')">Fundaciones</a></li>
-                    <li><a href="#" onclick="router('auth')">Registrarse</a></li>
-                </ul>
+    <div class="footer-links-wrapper">
+            <ul class="footer-links">
+            <li><a href="#" onclick="router('home')">Inicio</a></li>
+            <li><a href="#" onclick="router('about')">Sobre Nosotros</a></li>
+            <li><a href="#" onclick="router('foundations')">Fundaciones</a></li>
+        
+             </ul>
+             
+             <ul class="footer-links2">
+            <li><a href="#" onclick="router('sitters')">Cuidadores</a></li>
+            <li><a href="#" onclick="openTermsModal()">Términos</a></li>
+             </ul>
+    </div>
+        </div>
+            
+
+            <div class="footer-section">
+               
             </div>
 
             <div class="footer-section">
-                <h4>Servicios</h4>
-                <ul class="footer-links">
-                    <li><a href="#">Paseo de Perros</a></li>
-                    <li><a href="#">Cuidado en Casa</a></li>
-                    <li><a href="#">Hospedaje</a></li>
-                    <li><a href="#">Veterinario</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-section">
-                <h4>Síguenos</h4>
+                <h4>Síguenos en redes</h4>
                 <div class="social-icons">
-    <div class="social-icon">
-        <a href="#" aria-label="Instagram">
-            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <div class="social-icon" style="background: linear-gradient(135deg, #f77062, #fe5196, #c850c0);">
+        <a href="#"  aria-label="Instagram"> 
+            <svg class="instagram" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" >
                 <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
                 <circle cx="12" cy="12" r="4"/>
                 <circle cx="17.5" cy="6.5" r="1" fill="white" stroke="none"/>
+                
             </svg>
         </a>
     </div>
@@ -443,19 +598,37 @@
     </div>
             </div>
 </div>
-
+<br><br>
         <div class="footer-bottom">
+             <div class="footer-deco">
+            <span>🐾</span>
+            <span>🐾</span>
+            <span>🐾</span>
+            <span>🐾</span>
+            <span>🐾</span>
+            <span>🐾</span>
+           
+            
+          
         
             <p>© 2024 PawFriends. Todos los derechos reservados.</p>
             <div class="legal-links">
-                <a href="#" onclick="openTermsModal()">Términos</a>
-                <a href="#">Privacidad</a>
-                <a href="#">Cookies</a>
-                <a href="#">Contacto</a>
+                <div class="footer-deco">
+            <span>🐾</span>
+            <span>🐾</span>
+            <span>🐾</span>
+            <span>🐾</span>
+            <span>🐾</span>
+            <span>🐾</span>
+                
+               
             </div>
-        </div>
     </footer>
 
+
+
+
+    
     <script src="js/app.js"></script>
 </body>
 
