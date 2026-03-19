@@ -796,6 +796,45 @@
             margin-top: 15px;
         }
 
+        .contact-panel {
+            display: grid;
+            gap: 12px;
+            background: #fff;
+            border: 1px dashed #e6b2b2;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,.05);
+        }
+
+        .contact-panel label {
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: #663333;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-panel input,
+        .contact-panel textarea,
+        .contact-panel select {
+            width: 100%;
+            border: 2px solid #f1dede;
+            background: #fff8f7;
+            border-radius: 15px;
+            padding: 12px 14px;
+            font-family: 'Fredoka', sans-serif;
+        }
+
+        .contact-panel textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .contact-panel button {
+            width: fit-content;
+            min-width: 180px;
+        }
+
         .newsletter-form input {
             flex: 1;
             padding: 12px 15px;
