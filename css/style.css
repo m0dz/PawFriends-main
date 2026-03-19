@@ -1346,3 +1346,53 @@ line-height: 1.6;
             }
 
 @media (max-width: 768px) { .about-story-container, .values-grid, .mission-vision-grid { grid-template-columns: 1fr; } }
+
+/* CSS servicios */
+.servicio-cartas {
+    background-color: #f9f9f9;
+    padding: 40px 20px;
+    border-radius: 30px;
+}
+
+.carta-servicio {
+    display: flex;
+    flex-direction: row;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: transform ease 0.3s, box-shadow 0.3s ease;
+    gap: 30px;
+    /*align-items: center;*/ /* revisar si queda bien o no alineado, me parece raro */
+}
+
+.carta-servicio:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    border-color: #d1d1d1;
+}
+
+.imagen-servicios {
+    height: 200px;
+    width: 200px;
+    border-radius: 100px;
+    object-fit: cover;
+    border: solid 3px black;
+}
+
+.subtitulo-servicios {
+    font-size: 50px;
+    padding-bottom: 10px;
+}
+.parrafo-servicios {
+  font-size: 25px;
+  align-items: center;
+}
+
+.contenedor-servicios {
+    display: flex;
+    flex-direction: column;
+}
+
+/* CSS servicios */
