@@ -16,7 +16,7 @@ function toggleMenu() {
 
 // --- ROUTING ---
 function router(viewId) {
-    ['home', 'sitters', 'foundations', 'auth', 'dashboard', 'faq', 'about','servicios'].forEach(id => {
+    ['home', 'sitters', 'foundations', 'auth', 'dashboard', 'faq', 'about', 'servicios', 'contact'].forEach(id => {
         const el = document.getElementById('view-' + id);
         if (el) el.classList.add('hidden');
     });
@@ -136,6 +136,31 @@ router = function(viewId) {
 // Initialize
 router('home');
 
+function submitContactForm() {
+    const reason = document.getElementById('contact-reason').value;
+    const email = document.getElementById('contact-email').value.trim();
+    const message = document.getElementById('contact-message').value.trim();
+
+    if (!reason) {
+        alert('Por favor, selecciona el motivo de contacto.');
+        return;
+    }
+    if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
+        alert('Por favor, ingresa un correo válido.');
+        return;
+    }
+    if (!message) {
+        alert('Por favor, ingresa tu mensaje o información.');
+        return;
+    }
+
+    // Simulación de envío.
+    alert('¡Mensaje enviado! Nos comunicaremos contigo pronto.');
+
+    document.getElementById('contact-reason').value = '';
+    document.getElementById('contact-email').value = '';
+    document.getElementById('contact-message').value = '';
+}
 
 function toggleFaq(button) {
     const item = button.parentElement;

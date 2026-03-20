@@ -539,6 +539,34 @@
 
 
 
+    <!-- VIEW: CONTACT -->
+    <div id="view-contact" class="container hidden fade-in">
+        <div class="plush-volume" style="padding: 35px 25px; margin-top: 30px; margin-bottom: 30px;">
+            <h2>Contáctanos</h2>
+            <p style="margin-bottom: 1.5rem; opacity: 0.8;">Envía tu mensaje con el motivo de contacto y nuestro equipo te responderá lo antes posible.</p>
+
+            <div class="contact-panel">
+                <label for="contact-reason">Motivo de contacto</label>
+                <select id="contact-reason" class="plush-input">
+                    <option value="" selected disabled hidden>Seleccione un motivo</option>
+                    <option value="soporte">Soporte técnico</option>
+                    <option value="reserva">Consultas sobre reserva</option>
+                    <option value="sugerencias">Sugerencias</option>
+                    <option value="colaboracion">Colaboración</option>
+                    <option value="otros">Otros</option>
+                </select>
+
+                <label for="contact-email">Correo electrónico</label>
+                <input type="email" id="contact-email" class="plush-input" placeholder="tu@email.com">
+
+                <label for="contact-message">Mensaje / Información</label>
+                <textarea id="contact-message" class="plush-input" rows="5" placeholder="Cuéntanos cómo podemos ayudarte..."></textarea>
+
+                <button class="btn-plump" style="margin-top: 10px;" onclick="submitContactForm()">Enviar mensaje</button>
+            </div>
+        </div>
+    </div>
+
     <!-- FOOTER -->
     <footer class="site-footer">
         
@@ -562,6 +590,7 @@
             <li><a href="#" onclick="router('home')">Inicio</a></li>
             <li><a href="#" onclick="router('about')">Sobre Nosotros</a></li>
             <li><a href="#" onclick="router('foundations')">Fundaciones</a></li>
+            <li><a href="#" onclick="router('contact')">Contáctanos</a></li>
         
              </ul>
              
